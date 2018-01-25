@@ -32,7 +32,7 @@ sudo ip netns ls
     * 格式: `ip netns exec <name of ns> <cmd>`
     * 在下面可以看到剛建立的 namespace 當中只有 loopback 的 interface 可以使用
     * 啟用 loopback 的 interface !
-        ![](../../Resource/screenshot/netns_lo_ping.png)
+        ![](../../Resource/screenshot/netns_lo_ping.PNG)
     * 如果想要額外建立其獨立的 terminal 做使用，可以在剛剛 `<cmd>` 的地方輸入 bash (參考下方)
 ```bash
 # Execute command on h1
