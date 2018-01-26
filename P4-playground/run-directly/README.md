@@ -4,11 +4,12 @@
 
 ## Run
 
-* 呼叫 `start.sh` 來做建立實驗環境（*Step1~Step4*）
+* 呼叫 `build.sh` 來做建立實驗環境（*Step1~Step4*）
     * 也就是下面 `build` 的腳本，詳細可以參考 `build/` 的資料夾！
-* 由 `start.sh` 建好環境後，這時候可以進入到 Step5, 6 進行手動操作！
-    * Step5 開啟 switch 做操作（呼叫 simple_switch 來使用編譯好的 P4 程式）
-    * Step6 開啟 h1,h2，使用 `send.py`, `receive.py` 實現我們想要的 scenario!
+    * 當 `build.sh` 完成後，會自動開啟 3 個 xterm 的 terminal 做使用，接下來就可以依據不同的 namespace 來做不同的事！
+* 由 `build.sh` 建好環境後，這時候可以進入到 Step5, 6 進行手動操作！
+    * 開啟名稱為 switch 的 terminal 做操作，呼叫 simple_switch 來使用編譯好的 P4 程式 (參考 `Step5`)
+    * 開啟 h1,h2 的 terminal， h1 使用 `send.py`, h2 開啟 `receive.py` 做封包 sniffing ，實現我們想要的 scenario!
 
 * 最後使用完畢時，使用 `clearall.sh` 來清理實驗環境
 
@@ -33,7 +34,7 @@ sudo ip netns ls
     * 在下面可以看到剛建立的 namespace 當中只有 loopback 的 interface 可以使用
     * 啟用 loopback 的 interface !
         ![](../../Resource/screenshot/netns_lo_ping.PNG)
-    * 如果想要額外建立其獨立的 terminal 做使用，可以在剛剛 `<cmd>` 的地方輸入 bash (參考下方)
+    * 如果想要額外建立其獨立的 terminal 做使用，可以在剛剛 `<cmd>` 的地方輸入 `bash` (參考下方)； 或是直接輸入 `xterm` 來開啟另一個新的視窗做使用（也方便區隔彼此）
 ```bash
 # Execute command on h1
 sudo ip netns exec h1 ip addr
@@ -58,6 +59,7 @@ namespace h1>
 * Step 3: 建立第三個 namespace 作為 switch 使用
     * 利用兩條 veth pair 在這三個 namespace 中連結
     ![](../../Resource/gliffy/run_directly_scenario.png)
+    * 另外也可以透過 `ip link set <ethx> address <CUSTOM-MAC-ADDRESS>` 來設定自訂的 MAC Address ( 不然每次都會不一樣 )
 ```bash
 # build namespace for switch
 sudo ip netns add s1
@@ -92,23 +94,38 @@ sudo ip netns exec s1 ip addr add 10.0.2.2/24 dev s1-eth2
     * 實作基本轉傳 (forwarding) 功能!
     * `<補充>` 由於需要額外的 default routing table 給 h1, h2 內部，所以需要額外增加幾個 routing rules 到這兩個 host 裏面，分別是：
         * `h1`:
+            * 預期結果
             ```
             default via 10.0.1.2 dev h1-eth0
             10.0.1.0/24 dev h1-eth0 proto kernel scope link src 10.0.1.1
             10.0.1.2 dev h1-eth0 scope link
             10.0.2.2 via 10.0.1.2 dev h1-eth0
             ```
+            * 建立方式
+            ```bash
+            # add default gateway
+            sudo ip route add default via 10.0.1.2
+            sudo ip route add 10.0.2.2 via 10.0.1.2
+            ```
         * `h2`:
+            * 預期結果
             ```
             default via 10.0.2.2 dev h1-eth0
             10.0.2.0/24 dev h2-eth0 proto kernel scope link src 10.0.2.1
             10.0.2.2 dev h2-eth0 scope link
             10.0.1.2 via 10.0.2.2 dev h2-eth0
             ```
+            * 建立方式
+            ```bash
+            # add default gateway
+            sudo ip route add default via 10.0.2.2
+            sudo ip route add 10.0.1.2 via 10.0.2.2
+            ```
+        * 這麼一來就可以讓兩邊互通！
     * 再來執行 compile
 ```bash
 # Compile my P4 program
-p4c-bm-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
+p4c-bm2-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
 ```
 
 * Step 5: 在 s1 的 namespace 當中開啟 bash process 做操作
@@ -127,3 +144,9 @@ sudo ip netns exec s1 bash
 
 > 備註：
 > 如果發生 delete namespace 後，再次呼叫其他程式（e.g. `p4-tutorial`）出現"仍然有 ethx 佔用的"的錯誤訊息發生時，可以呼叫 `sudo mn -c`，讓 mininet 的指令來幫忙做清除的工作
+
+## Problems
+
+* [Q1] 無法使用 simple_switch 指定 s1-eth1, s1-eth2 來做使用，目前沒辦法通
+    * 釐清 simple_switch, simple_switch_CLI 使用
+    * `send.py`, `receive.py` 是否有問題？
