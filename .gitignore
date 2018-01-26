@@ -1,4 +1,9 @@
 # ignore pcap
 *.pcap
+# ignore P4 
+*.p4.json
+# ignore pyc
+*.pyc
+# docs - node modules 
 node_modules/
 package-lock.json
