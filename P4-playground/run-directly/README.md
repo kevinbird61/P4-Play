@@ -2,6 +2,8 @@
 
 透過 Linux 提供的 `ip` 指令來建立虛擬的網路環境，並搭配 P4 程式來做最小化的實際應用
 
+![](../../Resource/gliffy/p4_scenario.png)
+
 ## Run
 
 * 呼叫 `build.sh` 來做建立實驗環境（*Step1~Step4*）
@@ -124,15 +126,15 @@ sudo ip addr add 10.0.2.2/24 dev s1-eth2
 p4c-bm2-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
 ```
 
-* Step 5: 在 s1 的 namespace 當中開啟 bash process 做操作
+* Step 5: 在本地開啟 bash process 做操作
     * 這邊嘗試透過 `simple_switch` 開啟剛剛建立的兩個 port（分別連接 h1, h2）
-```bash
-# Open terminal of s1
-sudo ip netns exec s1 bash
+    ```bash
+    # Open terminal of s1
+    sudo ip netns exec s1 bash
 
-# Execute simple_switch for use (in s1 process)
-> sudo simple_switch -i 1@s1-eth1 -i 2@s1-eth2 --pcap --thrift-port 9090 --nanolog ipc:///tmp/bm-0-log.ipc --device-id 0 forwarding.p4.json --log-console
-```
+    # Execute simple_switch for use (in s1 process)
+    > sudo simple_switch -i 1@s1-eth1 -i 2@s1-eth2 --pcap --thrift-port 9090 --nanolog ipc:///tmp/bm-0-log.ipc --device-id 0 forwarding.p4.json --log-console
+    ```
 
 * Step 6: 開啟傳送封包的程式: `send.py`, `receive.py` 做使用，來檢查是否符合預期
     * 這邊和 `p4lang/tutorial/SIGCOMM2017/exercise` 中的使用方式雷同
