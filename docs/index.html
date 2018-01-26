@@ -1,0 +1,49 @@
+<!-- "doc" type, with tabs usage as template--><!-- Author: Kevin Cyu--><!-- include mixins--><!-- mixin - list--><!-- main--><!DOCTYPE html><html><!-- include header--><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Learning P4</title><link rel="stylesheet" href="./asset/highlight.min.css"/><link rel="stylesheet" href="./asset/paper.min.css"/><link rel="stylesheet" href="./asset/monokai.css"/><link rel="stylesheet" href="./asset/main.css"/><link rel="stylesheet" href="./asset/cn-font.css"/><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script src="./asset/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="container"><div class="paper"><div class="demo-title" id="top"><div class="row flex-center"><div class="text-center"> <h1 class=".cn">Learning P4</h1></div></div></div><div class="section"><div class="flex-spaces tabs">
+<input id="tab1" type="radio" name="tabs" checked/>
+<label for="tab1">frameheader</label>
+
+<div class="content" id="content1"><p><h2>IP/MAC Header</h2>
+<ul>
+<li>
+<p>MAC Layer - <strong>Ethernet Type II</strong> Frame, which contain:
+<img src="./res/ethernet_t.png" alt=""></p>
+<ul>
+<li><code>MAC Header</code>: (14 bytes)
+<ul>
+<li>Destination MAC Address: <code>6</code> bytes</li>
+<li>Source MAC Address: <code>6</code> bytes</li>
+<li>EtherType: <code>2</code> bytes
+這也是為什麼在範例中，使用的 <code>ethernet_t</code> 中使用的是 ( 48 + 48 + 16 ) bits 的格式（e.g. = MAC Header）</li>
+</ul>
+</li>
+<li><code>Data</code>: (46~1500 bytes)
+<ul>
+<li>Payload(IP, ARP, etc.)</li>
+</ul>
+</li>
+<li><code>CRC Checksum</code>: 4 bytes</li>
+</ul>
+</li>
+<li>
+<p>IP Header
+<img src="./res/ipv4_t.png" alt=""></p>
+<ul>
+<li><code>ip version</code>: 4 bits</li>
+<li><code>hdr lens</code>: 4 bits</li>
+<li><code>TOS (Type of Service)</code>: 8 bits</li>
+<li><code>Total Length</code>: 16 bits</li>
+<li><code>identification (Fragment ID)</code>: 16 bits</li>
+<li><code>flags (R, DF, MF)</code>: 3 bits</li>
+<li><code>fragment offset</code>: 13 bits</li>
+<li><code>TTL (Time-To-Live)</code>: 8 bits</li>
+<li><code>Protocol</code>: 8 bits</li>
+<li><code>Header Checksum</code>: 16 bits</li>
+<li><code>Source IP Address</code>: 32 bits</li>
+<li><code>Destination ID Address</code>: 32 bits
+( P4 tutorial 擷取到這部份 )</li>
+<li><code>Options</code>: 32 bits</li>
+<li><code>Data</code>: leftover part (from 24 bytes ~ end)</li>
+</ul>
+</li>
+</ul>
+</p></div></div></div><div class="to-top"><a class="paper-btn margin" href="#top">Top</a></div><div class="row flex-right"><p>Created by <span class="badge secondary">@ToolBuddy/papoGen(papercss)</span></p></div></div></div></body></html>

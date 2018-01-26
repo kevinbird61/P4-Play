@@ -26,6 +26,12 @@ chmod +x Installation/install.sh
 ./Installation/install.sh
 ```
 
+## Some notes 
+
+* Check out docs/
+    * using command `make` to generate it.
+    * using `papogen` as generator.
+
 ## About me
 
 * [kevinbird61(Kevin Cyu, 瞿旭民)](https://github.com/kevinbird61)
