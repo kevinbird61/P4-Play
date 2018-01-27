@@ -67,8 +67,9 @@ sudo ./build.py --behavioral-exe simple_switch --json simple_router.p4.json
     * 和 iptables 的用法有點類似， 第1行先行設定全部做 drop； 再來第2行則是設定剛剛提到的規矩：
         * simple_switch_CLI 的 `table_add` 語法為：
         ```bash
-        table_add <table name> <action name> <key value> => <目標> <priority>
+        table_add <table name> <action name> <key value> => <目標> <port>
         ```
         * 可以看到我們在 ipv4_lpm 的 table 中， ipv4_forward 這個 action 內加入 key 值：
             * `10.0.0.10/32` 為 h1 的 IP 位置，表示當看到 dstAddr 的時候，會把這個封包導向 00:04:00:00:00:00 的對口中（也就是 h1 的 MAC addr）
             * 以此類推，下面的那個是 h2 的版本
+        * <port> 的部份則是指定這個通道是屬於 switch 上哪個出口 port 
