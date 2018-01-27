@@ -47,3 +47,4 @@ Record some good website about catch up P4 concept.
     * Some useful information in Chinese.
 * [p4lang - github](https://github.com/p4lang)
     * tutorials about P4 goes here.
+* [Some good learning materials](LEARNING_MATERIALS.md)

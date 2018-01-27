@@ -156,3 +156,9 @@ p4c-bm2-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
 * [A1] **問題解決**！ 有幾項錯誤釐清：
     * s1 的 namespace 不必建立，原因是如果建立在獨立的 namespace 當中的話，則後來呼叫 `simple_switch` 與 `simple_switch_CLI` 之間 thrift_server 連接會很麻煩
     * 再來就是上個問題的原因，之前測試錯誤都是因為我忽略了一個 simple_switch 給的錯誤訊息： `Add port operation failed`；這個錯誤訊息出現表示 simple_switch 在 attach interface 到 port 上時出了錯誤（找不到該名稱的 interface 做使用），所以後來我把腳本中 s1 的部份拿掉，讓對口留在本地端；之後就直接掉用 simple_switch 以及 simple_switch_CLI 即可！
+
+## 小結
+
+* 本篇主軸放在剖析 simple_switch、 P4 程式對於現有網路的使用，並且撇開原先 python 的程式（對於像我這種 `非 python` 的 programmer 來說，更容易馬上了解 P4 的應用）
+* 雖然範例很小（ minimize 的 router 架構），不過對於基礎網路運作流程的複習是挺有幫助的！
+* 之後較為複雜的網路建置工程，就必須依靠 mininet 的幫助！（e.g. QoS ... etc）
