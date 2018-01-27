@@ -126,20 +126,21 @@ sudo ip addr add 10.0.2.2/24 dev s1-eth2
 p4c-bm2-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
 ```
 
+---
+(到這邊為止，都包含在 `build.sh` 的腳本內！)
+
 * Step 5: 在本地開啟 bash process 做操作
     * 這邊嘗試透過 `simple_switch` 開啟剛剛建立的兩個 port（分別連接 h1, h2）
     ```bash
-    # Open terminal of s1
-    sudo ip netns exec s1 bash
-
     # Execute simple_switch for use (in s1 process)
     > sudo simple_switch -i 1@s1-eth1 -i 2@s1-eth2 --pcap --thrift-port 9090 --nanolog ipc:///tmp/bm-0-log.ipc --device-id 0 forwarding.p4.json --log-console
     ```
 
 * Step 6: 開啟傳送封包的程式: `send.py`, `receive.py` 做使用，來檢查是否符合預期
+    * 於 `build.sh` 腳本完成後開啟的兩個 xterm 視窗使用！
     * 這邊和 `p4lang/tutorial/SIGCOMM2017/exercise` 中的使用方式雷同
 
-* Step 7: 透過 `simple_switch_CLI` 加入規則！
+* Step 7: 透過 `simple_switch_CLI` 加入規則後，即可使用！
     * 使用 simple_switch_CLI 讀取 basic_rules.txt 來匯入規則!
     ```bash
     simple_switch_CLI < basic_rules.txt
@@ -147,13 +148,14 @@ p4c-bm2-ss --p4v 16 forwarding.p4 -o forwarding.p4.json
 
 > 備註：
 > 如果發生 delete namespace 後，再次呼叫其他程式（e.g. `p4-tutorial`）出現"仍然有 ethx 佔用的"的錯誤訊息發生時，可以呼叫 `sudo mn -c`，讓 mininet 的指令來幫忙做清除的工作
+> 或者是呼叫 `clearall.sh` 來做清除的動作！
 
 ## Problems
 
-* [Q1] 無法使用 simple_switch 指定 s1-eth1, s1-eth2 來做使用，目前沒辦法通
+* **[Q1]** 無法使用 simple_switch 指定 s1-eth1, s1-eth2 來做使用，目前沒辦法通
     * 釐清 simple_switch, simple_switch_CLI 使用
     * ~~`send.py`, `receive.py` 是否有問題？~~
-* [A1] **問題解決**！ 有幾項錯誤釐清：
+* **[A1]** **問題解決**！ 有幾項錯誤釐清：
     * s1 的 namespace 不必建立，原因是如果建立在獨立的 namespace 當中的話，則後來呼叫 `simple_switch` 與 `simple_switch_CLI` 之間 thrift_server 連接會很麻煩
     * 再來就是上個問題的原因，之前測試錯誤都是因為我忽略了一個 simple_switch 給的錯誤訊息： `Add port operation failed`；這個錯誤訊息出現表示 simple_switch 在 attach interface 到 port 上時出了錯誤（找不到該名稱的 interface 做使用），所以後來我把腳本中 s1 的部份拿掉，讓對口留在本地端；之後就直接掉用 simple_switch 以及 simple_switch_CLI 即可！
 
