@@ -1,5 +1,6 @@
 #!/usr/bin/python
-
+import os
+import sys
 import argparse
 
 from mininet.cli import CLI
@@ -19,7 +20,7 @@ parser.add_argument('--thrift-port',help='Thrift server port for CLI tool to upd
                     type=int,action="store",default="9090")
 parser.add_argument('--num-hosts',help='Number of hosts to connect to switch',
                     type=int,action="store",default=2)
-parser.add_argument('--mode',choices=['12','13'],type=str,default='13')
+parser.add_argument('--mode',choices=['l2','l3'],type=str,default='l3')
 parser.add_argument('--json', help='Path to JSON config file',
                     type=str, action="store", required=True)
 parser.add_argument('--pcap-dump', help='Dump packets on interfaces to pcap files',
