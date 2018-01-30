@@ -9,12 +9,39 @@ So it will have some basic concept about `networking command in Linux`, `mininet
 * Repository configuration
     * [Installation](Installation/)
     * [P4-playground](P4-playground/)
+        * [multiswitch](P4-playground/multiswitch)
+            * Using `mininet` with python API support
+            * Contain some experiments with P4 and multiple switches scenario.
+                * `basic forwarding`
+                * `multi-hop route inspection`
+                * `load balancing (ECMP)`
+        * [run-directly](P4-playground/run-directly)
+            * Using `ip` command to build the network environment with single switch.
+            * And then using `simple_switch` with P4 directly.
+        * [run-mininet](P4-playground/run-mininet)
+            * Using `mininet` to build the network environment with single switch.
+            * And then using `p4_mininet.py` as P4 class.
+            * Implement the basic forwarding scenario.
+    * [Resource](Resource/)
+        * Contain the image usage, flowchart source.
+    * [docs](docs/)
+        * Recording some useful information when you coding an P4 program.
+        * And using `papogen` to generate them into static webpages.
 ```
 P4-Play -
 | - Installation
 |   - install.sh
 | - P4-playground
-|   - ... 
+|   - multiswitch/
+|   - run-directly/
+|   - run-mininet/
+| - Resource
+|   - gliffy/
+|   - res/
+|   - screenshot/
+| - docs/
+|   - *.md
+|   - index.html
 ```
 
 * build the P4 develop environment:
