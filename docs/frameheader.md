@@ -28,3 +28,6 @@
     ( P4 tutorial 擷取到這部份 )
     * `Options`: 32 bits
     * `Data`: leftover part (from 24 bytes ~ end)
+
+* TCP Header
+    ![](../Resource/res/tcp_t.png)
