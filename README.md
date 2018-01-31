@@ -22,6 +22,8 @@ So it will have some basic concept about `networking command in Linux`, `mininet
             * Using `mininet` to build the network environment with single switch.
             * And then using `p4_mininet.py` as P4 class.
             * Implement the basic forwarding scenario.
+        * [net_build](P4-playground/net_build)
+            * python script for building those scenario.
     * [Resource](Resource/)
         * Contain the image usage, flowchart source.
     * [docs](docs/)

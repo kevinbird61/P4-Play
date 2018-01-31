@@ -2,7 +2,9 @@
 
 * 重現 SIGCOMM2017 教學、以及一些對 P4 程式的調整使用
 * 主要以多個 switch 的模型為主
-* 使用 mininet python 來實作 multiple switch 的 topo
+* [更新] 目前統一把建置的 python 腳本都放置在 `P4-playground/net_build` 資料夾底下，統一透過 `*.sh` 來做呼叫後使用
+    * 降低 code size，避免程式碼重複出現
+    * 使用 mininet python 來實作 multiple switch 的 topo
 
 ## 練習
 

@@ -1,4 +1,3 @@
-
 from mininet.net import Mininet
 from mininet.node import Switch, Host
 from mininet.log import setLogLevel, info, error, debug
