@@ -6,7 +6,7 @@ Record something useful information and experiments on P4.
 This repository will record some information about how I learn P4 from hardly without any knowledge about networking. 
 So it will have some basic concept about `networking command in Linux`, `mininet API learning`, and some `P4 spec` knowledge I read from [`p4.org/specs`](https://p4.org/specs/), like `PSA`, `P4_16`. All the practices will base on `P4_16` to illustrate.
 
-* Repository configuration
+* Repository Structure
     * [Installation](Installation/)
     * [P4-playground](P4-playground/)
         * [multiswitch](P4-playground/multiswitch)

@@ -20,3 +20,6 @@
     
 * mininet API 學習的專案：
     * [toolbuddy/mininet-python](https://github.com/toolbuddy/mininet-python)
+
+* P4 Debugger 使用：
+    * [P4 debugger manual](https://github.com/p4lang/behavioral-model/blob/master/docs/p4dbg_user_guide.md)
