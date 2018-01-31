@@ -6,6 +6,7 @@
 
 * [`fetch_packet_info_switch.p4`]()
     * 主要目的實作一個能夠在 ingress/egress 時紀錄 packet 在 switch 內的內容 packet
+    * 需要額外的修改（像是 `mri`，修改 send.py 以及 receive.py 來做 demo） 
 
 ## 筆記
 

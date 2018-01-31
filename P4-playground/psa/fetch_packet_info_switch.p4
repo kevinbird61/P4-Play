@@ -73,7 +73,9 @@ parser FPI_Parser(packet_in packet,
 
     state parse_ipv4{
         packet.extract(hdr.ipv4);
-        transition parse_packet_info;
+        transition accept;
+        // Need to modify the send.py to add additional message on pkt !
+        //transition parse_packet_info;
     }
 
     state parse_packet_info{

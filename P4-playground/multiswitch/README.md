@@ -10,6 +10,12 @@
 
 相關的練習使用，一些異質性高的檔案會放在不同名稱的資料夾當中做使用！
 
+* [`basic forwarding` 的展示](#basic-forwarding-展示)
+* [`mri: Multi-hop route inspection` 的展示](#mri-multi-hop-route-inspection-展示)
+* [`load balancing` 的展示](#load-balancing-機制實作)
+
+---
+
 ### `basic forwarding` 展示：
 * switch 規則放置於 `basic_forwarding/` 底下
     * 可以透過呼叫該目錄底下的 `feed.sh` 來把 table rules 餵給 simple_switch

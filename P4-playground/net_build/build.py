@@ -38,17 +38,20 @@ class multiSwitchTopo(Topo):
                         sw_path=sw_path,
                         json_path=json_path,
                         thrift_port=thrift_port,
-                        pcap_dump=pcap_dump)
+                        pcap_dump=pcap_dump,
+                        enable_debugger=True)
         s2 = self.addSwitch('s2',
                         sw_path=sw_path,
                         json_path=json_path,
                         thrift_port=thrift_port+1,
-                        pcap_dump=pcap_dump)
+                        pcap_dump=pcap_dump,
+                        enable_debugger=True)
         s3 = self.addSwitch('s3',
                         sw_path=sw_path,
                         json_path=json_path,
                         thrift_port=thrift_port+2,
-                        pcap_dump=pcap_dump)
+                        pcap_dump=pcap_dump,
+                        enable_debugger=True)
         # Create hosts
         h1 = self.addHost('h1',
                     ip="10.0.1.10/24",
