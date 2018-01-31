@@ -133,12 +133,18 @@ control FPI_Ingress(inout headers hdr,
 control FPI_Egress(inout headers hdr,
         inout metadata meta,
         inout standard_metadata_t standard_metadata){
+    // copy
+    action copy_pkt_info_deq(){
+        hdr.packet_info.deq_timedelta = standard_metadata.deq_timedelta;
+        hdr.packet_info.deq_qdepth = standard_metadata.deq_qdepth;
+    }
+
     // table
     table swtrace{
         actions = {
-            NoAction;
+            copy_pkt_info_deq;
         }
-        default_action = NoAction();
+        default_action = copy_pkt_info_deq();
     }
 
     // apply the table 
