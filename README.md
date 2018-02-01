@@ -68,6 +68,13 @@ chmod +x Installation/install.sh
 * [kevinbird61(Kevin Cyu, 瞿旭民)](https://github.com/kevinbird61)
     * Nation Cheng-Kung University. Major in `Software-defined network`, especially focus on `P4`.
 
+## Some learning notes 
+
+> This part record about some learning notes of mine, (About `P4`)
+> Might help somebody know about `P4` quickly !
+
+* [P4 Introduction/with tutorial - `Chinese`](http://slides.com/kevinbird61/p4/fullscreen)
+
 ## Reference
 
 Record some good website about catch up P4 concept.
