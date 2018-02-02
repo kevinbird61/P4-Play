@@ -20,6 +20,13 @@
     * 多了一個前綴： 用這個 table 或是 action 所在的 **control block** 的名稱作為其前綴！
     * 舉例來說，在 control block - `MyIngress` 內有 table - `ipv4_lpm` 以及 action `ipv4_forward`; 則原本的餵給 simple_switch_CLI 可以直接使用 `ipv4_lpm` 以及  `ipv4_forward`; 而在最新的改動後， 則需要加上 `MyIngress` 在前方，變成 `MyIngress.ipv4_lpm` 以及 `MyIngress.ipv4_forward` 來做使用！
 > 所以專案內 `rules.txt` 可以依據你目前使用的 `p4c` 版本來做微調！
+> 詳細可以參考: 
+> 
+> [p4lang/p4c - issue#1106](https://github.com/p4lang/p4c/pull/1106)
+>     -> 解釋命名衝突的部份
+> 
+> [p4lang/tutorials - issue#113](https://github.com/p4lang/tutorials/issues/113#issuecomment-362638729)
+>     -> 我在 p4lang/tutorial 所提出的問題處，作者提出的相關解釋
 
 ## 學習
 
