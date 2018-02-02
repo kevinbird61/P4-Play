@@ -1,6 +1,20 @@
 # 安裝教學
 
-如果在使用 `install.sh` 時發生錯誤，可以找尋下方連結內的說明做參考！
+修正部份安裝腳本內容，並且分解成多個安裝腳本使用！
+* Step 1
+    * 需要先安裝 grpc, 以及 protobuf 的相依性
+    * 可以使用 `install_grpc.sh` 腳本來提供這兩個部份的安裝！
+    * 再來安裝 nanomsg： `install_nanomsg.sh` (這部份不確定有沒有包含在 `bmv2` 官方提供的 install_dep.sh 當中 )
+* Step 2
+    * 安裝 p4c: `install_p4c.sh`
+* Step 3
+    * 安裝 bmv2: `install_bmv2.sh`
+* Step 4
+    * 安裝 PI: `install_PI.sh`
+
+相關安裝的紀錄可以在下方連結內的說明做參考！
+
+---
 
 * [p4c build from source](https://paper.dropbox.com/doc/p4c-Build-from-source-3EVmYVpUepVjM9ts93ZYp)
 * [bmv2 build from source](https://paper.dropbox.com/doc/bmv2-build-from-source-cIjFvhmRliz7XLjn87ogR)
@@ -19,6 +33,7 @@
 * ubuntu 16.04: `4.13.0-31-generic #34~16.04.1-Ubuntu SMP Fri Jan 19 17:11:01 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux`
 * lubuntu 17.10: `4.13.0-25-generic #29-Ubuntu SMP Mon Jan 8 21:14:41 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux`
 
+> 另外一些有趣的問題也會紀錄在 `P4-playground` 底下喔！
 
 ## 其他項目
 
