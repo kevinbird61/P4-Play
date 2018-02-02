@@ -12,6 +12,15 @@
 
 * 以及學習網路相關的 linux 指令集
 
+## 問題與解決
+
+* 在 2018/2/1~ 2/2 的這段時間，剛好電腦重新安裝，所以順便重新整理一份安裝腳本，以及測試
+* 發現在當下這個 [p4c 的 compiler 版本](https://github.com/p4lang/p4c/commit/5c61d1f65eeaff53b6755f816bcea28034622c3b) ，其產生的 json 格式會出現一個與以往不同的改動！
+    * 在解析 p4c-bm2-ss 所編譯產生的 json 格式時發現，原本直接以 `table`, `action` 名稱直接命名的規則，在這版當中出現不同的結果！
+    * 多了一個前綴： 用這個 table 或是 action 所在的 **control block** 的名稱作為其前綴！
+    * 舉例來說，在 control block - `MyIngress` 內有 table - `ipv4_lpm` 以及 action `ipv4_forward`; 則原本的餵給 simple_switch_CLI 可以直接使用 `ipv4_lpm` 以及  `ipv4_forward`; 而在最新的改動後， 則需要加上 `MyIngress` 在前方，變成 `MyIngress.ipv4_lpm` 以及 `MyIngress.ipv4_forward` 來做使用！
+> 所以專案內 `rules.txt` 可以依據你目前使用的 `p4c` 版本來做微調！
+
 ## 學習
 
 * 針對 p4lang/tutorial/SIGCOMM2017 的學習紀錄：
