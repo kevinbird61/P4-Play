@@ -8,7 +8,7 @@ sudo apt install automake cmake libjudy-dev libgmp-dev libpcap-dev libboost-dev 
 # autogen & configure
 ./autogen.sh
 # enable simple_switch enter debugger mode
-./configure --enable-debugger 
+./configure --enable-debugger --with-pi
 # compile 
 make 
 # install 

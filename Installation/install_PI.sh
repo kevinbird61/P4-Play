@@ -8,7 +8,7 @@ cd PI && git submodule update --init --recursive
 sudo apt install libjudy-dev libreadline-dev 
 
 ./autogen.sh 
-./configure --with-bmv2
+./configure --with-bmv2 --with-proto
 make && make check 
 sudo make install 
 

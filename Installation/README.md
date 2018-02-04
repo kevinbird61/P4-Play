@@ -8,9 +8,11 @@
 * Step 2
     * 安裝 p4c: `install_p4c.sh`
 * Step 3
-    * 安裝 bmv2: `install_bmv2.sh`
-* Step 4
     * 安裝 PI: `install_PI.sh`
+* Step 4
+    * 安裝 bmv2: `install_bmv2.sh`
+
+> [補充] 如果要使用 PI 的功能，則需要先使用 install_PI.sh 再使用 install_bmv2.sh
 
 相關安裝的紀錄可以在下方連結內的說明做參考！
 
