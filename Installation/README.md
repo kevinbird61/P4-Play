@@ -13,6 +13,8 @@
     * 安裝 bmv2: `install_bmv2.sh`
 
 > [補充] 如果要使用 PI 的功能，則需要先使用 install_PI.sh 再使用 install_bmv2.sh
+> 
+> [補充] 啟用 simple_switch_grpc 需要額外編譯 grpc 模組！ 以及使用 install_gNMI_support.sh 來安裝 gNMI 的支援！ (詳細參考 bmv2 的專案資料夾內 targets/simple_switch_grpc 內的說明文件)
 
 相關安裝的紀錄可以在下方連結內的說明做參考！
 
