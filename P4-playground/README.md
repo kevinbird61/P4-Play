@@ -4,13 +4,16 @@
 
 ## 目標
 
-* 學習如何透過 mininet 來建立虛擬網路環境中使用 P4
-* 學習如何直接用 linux 支援的 network 指令來使用 P4
-* 進一步使用在不同硬體裝置間使用
-    * 一般數台主機間
-    * NetFPGA
-
-* 以及學習網路相關的 linux 指令集
+- [x] 學習如何直接用 linux 支援的 network 指令來使用 P4
+    * 學習網路相關的 linux 指令集
+    * 詳細可以參考 [`run-directly`](run-directly/)
+- [x] 學習如何透過 mininet 來建立虛擬網路環境中使用 P4
+    * 詳細可以參考 [`run-mininet`](run-mininet/), [`multiswitch`](multiswitch/)
+    * 如果有其他有趣的專案，也會一併更新於此！
+- [ ] 學習如何使用 P4Runtime 相關的操作（e.g. `simple_switch_grpc`, `P4Info` ... 等等的了解）
+- 進一步使用在不同硬體裝置間使用
+    - [ ] 一般數台主機間 ( 實際應用的 scenario )
+    - [ ] NetFPGA
 
 ## 問題與解決
 
