@@ -11,6 +11,8 @@
     * 安裝 PI: `install_PI.sh`
 * Step 4
     * 安裝 bmv2: `install_bmv2.sh`
+* `Other`
+    * [如何安裝 `simple_switch_grpc`?](install_simple_switch_grpc.md)
 
 > [補充] 如果要使用 PI 的功能，則需要先使用 install_PI.sh 再使用 install_bmv2.sh
 > 
