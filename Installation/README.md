@@ -17,6 +17,10 @@
 > [補充] 如果要使用 PI 的功能，則需要先使用 install_PI.sh 再使用 install_bmv2.sh
 > 
 > [補充] 啟用 simple_switch_grpc 需要額外編譯 grpc 模組！ 以及使用 install_gNMI_support.sh 來安裝 gNMI 的支援！ (詳細參考 bmv2 的專案資料夾內 targets/simple_switch_grpc 內的說明文件)
+>
+> [補充] 使用 P4Runtime: 重新編譯後的 PI, 在[p4lang/tutorial 教學](https://github.com/p4lang/tutorials/tree/master/P4D2_2017_Fall/exercises/p4runtime)中一直無法讓 `mycontroller.py` 正確執行, 並且目前沒有人 focus 在這部份做討論; 目前的 issue 只看到[這個](https://github.com/p4lang/tutorials/issues/109)有討論到這個問題，但最後結論是回到使用 VM
+> -> Solution : 使用 P4 官方提供的 vm
+> -> 2018/2/8 : 發現問題在 PI/proto/ 底下使用 `p4runtime.proto` 在新的版本有改動過，進而使得 tutorial 當中的 controller 程式無法使用（ mycontroller.py 使用的相關 library, 會使用編譯產生的 grpc python 相依性，其中由於原始 `p4runtime.proto` 的改動，導致後來的 behavior 產生異常; 如果要在最新的環境上使用 P4Runtime，需要額外修改 mycontroller 的相依性中的內容！ ） 往後的 P4Runtime 研究會放到[這裡做紀錄](solve_p4runtime_usage_record.md)
 
 相關安裝的紀錄可以在下方連結內的說明做參考！
 
