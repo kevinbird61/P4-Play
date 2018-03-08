@@ -1,5 +1,19 @@
 # 安裝教學
 
+## 透過 P4 tutorial 內的 vagrant 腳本改寫
+
+* 改寫 p4lang/tutorials 內專案中 vm 提供的安裝腳本 `root-bootstrap.sh`, `user-bootstrap.sh` 來做修改，並可以直接適用於 **ubuntu 16.04** 的環境上
+
+```bash
+# Step 1 - install dependencies
+./root-bootstrap.sh
+
+# Step 2 - install environment for p4
+./user-bootstrap.sh
+```
+
+## 先前的個人安裝方式
+
 修正部份安裝腳本內容，並且分解成多個安裝腳本使用！
 * Step 1
     * 需要先安裝 grpc, 以及 protobuf 的相依性
