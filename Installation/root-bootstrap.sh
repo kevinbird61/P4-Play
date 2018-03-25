@@ -9,7 +9,6 @@ sudo apt-get install -y --no-install-recommends \
   cmake \
   cpp \
   curl \
-  emacs24 \
   flex \
   git \
   libboost-dev \
@@ -36,7 +35,6 @@ sudo apt-get install -y --no-install-recommends \
   libssl-dev \
   libtool \
   linux-headers-$KERNEL\
-  lubuntu-desktop \
   make \
   mktemp \
   pkg-config \
@@ -52,3 +50,6 @@ sudo apt-get install -y --no-install-recommends \
   wget \
   xcscope-el \
   xterm
+
+# disable screen saver
+sudo apt -y remove light-locker
