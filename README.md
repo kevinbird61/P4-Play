@@ -8,6 +8,7 @@ So it will have some basic concept about `networking command in Linux`, `mininet
 
 * Repository Structure
     * [Installation](Installation/)
+        * About install the p4 develop requirement environment. See more under this folder.
     * [P4-playground](P4-playground/)
         * [multiswitch](P4-playground/multiswitch)
             * Using `mininet` with python API support
@@ -31,31 +32,6 @@ So it will have some basic concept about `networking command in Linux`, `mininet
     * [docs](docs/)
         * Recording some useful information when you coding an P4 program.
         * And using `papogen` to generate them into static webpages.
-```
-P4-Play -
-| - Installation
-|   - install.sh
-| - P4-playground
-|   - multiswitch/
-|   - run-directly/
-|   - run-mininet/
-| - Resource
-|   - gliffy/
-|   - res/
-|   - screenshot/
-| - docs/
-|   - *.md
-|   - index.html
-```
-
-* build the P4 develop environment:
-    * It will install `p4c`, `bmv2`, `PI` for you.
-```bash
-# add execute mode to scripts
-chmod +x Installation/install.sh
-# execute
-./Installation/install.sh
-```
 
 ## Some notes 
 
